@@ -2,6 +2,8 @@ import { App } from '@tinyhttp/app'
 import { isEmptyObject, hasPostProps, PORT, isEmptyString } from './src/utils.js'
 import { search, insert, bulkinsert } from './src/core/elasticsearch/client.js'
 import {json as json_parser} from 'milliparsec';
+
+
 const app = new App().use('/', json_parser())
 
 
