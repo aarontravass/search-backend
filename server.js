@@ -35,7 +35,6 @@ app.post('/insert/bulk/:index', async (req, res) => {
 
 app.post('/insert/:index', async (req, res) => {
     const index = req.params.index;
-    console.log(req);
     let document = {};
     if (!isEmptyObject(req.body) && hasPostProps(req.body)) {
         document = req.body;
