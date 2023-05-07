@@ -1,11 +1,9 @@
 import { App } from '@tinyhttp/app'
 import { isEmptyObject, hasPostProps, PORT, isEmptyString } from './src/utils.js'
 import { search, insert, bulkinsert } from './src/core/elasticsearch/client.js'
-import {json as json_parser} from 'milliparsec';
-
+import { json as json_parser } from 'milliparsec';
 
 const app = new App().use('/', json_parser())
-
 
 app.get('/search/:index', async (req, res) => {
     const index = req.params.index;
@@ -15,7 +13,6 @@ app.get('/search/:index', async (req, res) => {
         const result = await search(index, query, value);
         return res.status(200).send(result)
     }
-
 })
 
 
@@ -28,7 +25,6 @@ app.post('/insert/bulk/:index', async (req, res) => {
                 data_to_be_inserted.push(data);
             }
         }
-
     }
     if (data_to_be_inserted.length) {
         const result = await bulkinsert(index, data_to_be_inserted);
